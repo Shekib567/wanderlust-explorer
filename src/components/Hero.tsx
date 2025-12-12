@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, MapPin, Star, Users } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-santorini.jpg";
@@ -8,12 +8,6 @@ const Hero = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-
-  const stats = [
-    { icon: MapPin, value: "150+", label: "Reiseziele" },
-    { icon: Users, value: "50K+", label: "Zufriedene Gäste" },
-    { icon: Star, value: "4.9", label: "Bewertung" },
-  ];
 
   return (
     <section className="relative min-h-screen overflow-hidden">
@@ -91,38 +85,12 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="absolute bottom-12 left-4 right-4 lg:left-8 lg:right-8"
-        >
-          <div className="glass-dark rounded-2xl p-6 md:p-8">
-            <div className="grid grid-cols-3 gap-8">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                  className="text-center"
-                >
-                  <stat.icon className="h-6 w-6 mx-auto mb-2 text-sunset-coral" />
-                  <div className="text-2xl md:text-4xl font-bold text-background">{stat.value}</div>
-                  <div className="text-sm text-background/70">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
         {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
