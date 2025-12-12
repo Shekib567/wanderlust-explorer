@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Compass } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/WanderlustLOGO.png";
 
 const navLinks = [
   { name: "Startseite", path: "/" },
@@ -40,16 +41,14 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <Compass className={cn(
-              "h-8 w-8 transition-colors duration-300",
-              isScrolled ? "text-primary" : "text-background"
-            )} />
-            <span className={cn(
-              "font-display text-2xl font-bold transition-colors duration-300",
-              isScrolled ? "text-foreground" : "text-background"
-            )}>
-              Wanderlust
-            </span>
+            <img 
+              src={logo} 
+              alt="Wanderlust Logo" 
+              className={cn(
+                "h-36 w-auto transition-all duration-300",
+                isScrolled ? "brightness-100" : "brightness-0 invert"
+              )} 
+            />
           </Link>
 
           {/* Desktop Navigation */}
